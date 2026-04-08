@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Will FAQ</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Segoe UI', sans-serif; background: #f0f2f5; color: #2c2c2c; }
+
+.top-bar {
+  background: #1a2e4a;
+  color: white;
+  padding: 28px 40px;
+}
+.top-bar h1 { font-size: 20px; font-weight: 600; }
+.top-bar p { font-size: 13px; color: #a8bcd4; margin-top: 5px; }
+
+.laws-section {
+  background: #fff;
+  margin: 24px auto;
+  max-width: 900px;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.07);
+}
+.laws-header {
+  background: #c9a84c;
+  color: #1a2e4a;
+  padding: 14px 24px;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+}
+.law-item {
+  padding: 18px 24px;
+  border-bottom: 1px solid #f0f0f0;
+}
+.law-item:last-child { border-bottom: none; }
+.law-title { font-size: 13px; font-weight: 700; color: #1a2e4a; margin-bottom: 5px; }
+.law-tag { display: inline-block; background: #eef3f8; color: #1a2e4a; font-size: 11px; padding: 2px 8px; border-radius: 3px; margin-bottom: 6px; font-weight: 600; }
+.law-text { font-size: 13.5px; line-height: 1.75; color: #444; }
+
+.main { max-width: 900px; margin: 0 auto 40px; }
+
+.category {
+  background: #fff;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.07);
+}
+.cat-header {
+  background: #1a2e4a;
+  color: white;
+  padding: 13px 22px;
+  font-size: 13.5px;
+  font-weight: 600;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.cat-header:hover { background: #243f63; }
+.cat-toggle { font-size: 18px; transition: transform 0.2s; }
+.cat-body { display: block; }
+.cat-body.collapsed { display: none; }
+
+.faq-item { border-bottom: 1px solid #f0f0f0; }
+.faq-item:last-child { border-bottom: none; }
+.faq-q {
+  padding: 14px 22px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #1a2e4a;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  line-height: 1.5;
+}
+.faq-q:hover { background: #f8f9fb; }
+.faq-num { color: #c9a84c; font-size: 12px; font-weight: 700; min-width: 28px; }
+.faq-arrow { font-size: 13px; color: #888; margin-top: 2px; transition: transform 0.2s; }
+.faq-a {
+  display: none;
+  padding: 4px 22px 16px 50px;
+  font-size: 13.5px;
+  line-height: 1.8;
+  color: #444;
+  background: #fafbfc;
+}
+.faq-a.open { display: block; }
+.faq-a ul { padding-left: 18px; margin-top: 6px; }
+.faq-a ul li { margin-bottom: 4px; }
+.law-ref { font-size: 11.5px; color: #5b8db8; font-style: italic; }
+.highlight { background: #fef9ed; border-left: 3px solid #c9a84c; padding: 8px 12px; margin-top: 8px; font-size: 13px; border-radius: 0 4px 4px 0; }
+.alert { background: #fdf0f0; border-left: 3px solid #c0392b; padding: 8px 12px; margin-top: 8px; font-size: 13px; border-radius: 0 4px 4px 0; }
+
+.search-bar {
+  max-width: 900px;
+  margin: 20px auto 16px;
+  padding: 0 4px;
+}
+.search-bar input {
+  width: 100%;
+  padding: 12px 18px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  font-size: 14px;
+  outline: none;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+}
+.search-bar input:focus { border-color: #1a2e4a; }
+
+.footer { text-align: center; font-size: 12px; color: #999; padding: 20px; }
+</style>
+</head>
+<body>
+
+<div class="top-bar">
+  <h1>Will FAQ — Internal Team Reference</h1>
+  <p>Last Will & Testament of Chadi Nassif Menhem · Prepared for team use · Dubai, UAE</p>
+</div>
+
+<div class="search-bar">
+  <input type="text" id="searchInput" placeholder="🔍  Search questions..." onkeyup="filterFAQ()">
+</div>
+
+<!-- LAWS SECTION -->
+<div class="laws-section main">
+  <div class="laws-header">📋 Referenced Laws & What They Mean</div>
+
+  <div class="law-item">
+    <div class="law-tag">UAE Federal Law</div>
+    <div class="law-title">Article 17 — Law of Civil Transactions (Federal Law No. 5/1985)</div>
+    <div class="law-text">This is the foundation of the entire will. Article 17 allows non-UAE nationals to have their estate governed by the laws of their home country rather than UAE law. It means a Lebanese Christian like Chadi can direct that his estate be distributed according to his own wishes — not under UAE default rules or Sharia law.</div>
+  </div>
+
+  <div class="law-item">
+    <div class="law-tag">Dubai Local Law</div>
+    <div class="law-title">Dubai Law No. 15 of 2017 — Non-Muslim Wills & Inheritance</div>
+    <div class="law-text">This Dubai-specific law created a dedicated system for non-Muslims to register and execute wills in Dubai. It established the DIFC Wills Service Centre and allows non-Muslims to freely distribute their UAE assets as they choose. It takes precedence over any general legislation on the same topic. This law is why Chadi's will can legally exclude Sharia law entirely.</div>
+  </div>
+
+  <div class="law-item">
+    <div class="law-tag">UAE Federal Law</div>
+    <div class="law-title">Federal Law No. 28 of 2005 — Personal Status Law</div>
+    <div class="law-text">This is the UAE's main family and inheritance law, which applies Sharia principles to estate matters by default. For Muslims, this governs how estates are divided. For non-Muslims with a registered will (like Chadi), this law is overridden by Dubai Law No. 15/2017 and Article 17 of the Civil Transactions Law.</div>
+  </div>
+
+  <div class="law-item">
+    <div class="law-tag">UAE Federal Law</div>
+    <div class="law-title">Federal Decree-Law No. 14 of 2021 — Amending Civil Transactions Law</div>
+    <div class="law-text">This is the most recent amendment to the Civil Transactions Law. It strengthened the rights of non-Muslims to have their wills and estates handled according to their own national laws or their expressed wishes. It reinforces that non-Muslim expatriates do not need to follow Sharia inheritance rules.</div>
+  </div>
+
+  <div class="law-item">
+    <div class="law-tag">Lebanese Law</div>
+    <div class="law-title">Lebanese Civil Law — Applicable as Home Country Law</div>
+    <div class="law-text">Referenced in Clause 3(C) of the will as a fallback. If a UAE court refuses to enforce any part of Chadi's will, Lebanese law — the law of his country of origin — will be applied to resolve the dispute. Under Lebanese civil law for Christians, estates can be distributed freely by will without religious inheritance formulas.</div>
+  </div>
+
+  <div class="law-item">
+    <div class="law-tag">Sharia Law</div>
+    <div class="law-title">Islamic Inheritance Law (Faraid)</div>
+    <div class="law-text">Sharia inheritance law (Faraid) prescribes fixed shares to family members — spouse, children, parents — regardless of the deceased's wishes. For example, a son receives double a daughter's share; non-family members receive nothing. This will explicitly and legally excludes Faraid from applying to Chadi's estate.</div>
+  </div>
+</div>
+
+<!-- FAQ CATEGORIES -->
+<div class="main" id="faqContainer">
+
+<!-- 1. GENERAL -->
+<div class="category">
+  <div class="cat-header" onclick="toggleCat(this)">General Will Questions <span class="cat-toggle">▲</span></div>
+  <div class="cat-body">
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFAQ(this)"><span class="faq-num">1</span>What is the purpose of this will?<span class="faq-arrow">▼</span></div>
+      <div class="faq-a">A will legally records how you want your assets distributed after your death. Without one, UAE courts decide — typically applying Sharia law by default. This will ensures your specific wishes are legally binding and followed. <span class="law-ref">(Dubai Law No. 15/2017; Federal Law No. 5/1985 Art. 17)</span></div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFAQ(this)"><span class="faq-num">2</span>Which country does this will apply to?<span class="faq-arrow">▼</span></div>
+      <div class="faq-a">This will applies exclusively to assets situated within the UAE. It does not cover assets in Lebanon, KSA, or any other country. A separate will would be needed for assets held elsewhere.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFAQ(this)"><span class="faq-num">3</span>Does this will cover assets I own outside the UAE?<span class="faq-arrow">▼</span></div>
+      <div class="faq-a">No. This will is limited to UAE-based assets only. If you own property or assets in Lebanon, KSA, or elsewhere, those require separate legal arrangements in the relevant country.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFAQ(this)"><span class="faq-num">4</span>Is this will valid even though I am not a UAE national?<span class="faq-arrow">▼</span></div>
+      <div class="faq-a">Yes. UAE law specifically allows non-nationals to register wills governing their UAE assets. As a Lebanese national and non-Muslim, you are fully entitled to do this. <span class="law-ref">(Federal Law No. 5/1985 Art. 17; Dubai Law No. 15/2017)</span></div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFAQ(this)"><span class="faq-num">5</span>What happens if I move to another country — does this will still apply?<span class="faq-arrow">▼</span></div>
+      <div class="faq-a">Yes, as long as you still own assets in the UAE, this will remains valid and governs those assets. Your place of residence does not invalidate it. However, your residency details in the will should be kept accurate and updated when you move.</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- 2. RESIDENCY -->
+<div class="category">
+  <div class="cat-header" onclick="toggleCat(this)">Residency & Identity <span class="cat-toggle">▲</span></div>
+  <div class="cat-body">
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFAQ(this)"><span class="faq-num">6</span>My residency details in the will are incorrect — does this invalidate the will?<span class="faq-arrow">▼</span></div>
+      <div class="faq-a">Not automatically. However, inaccurate details can create complications or be used to challenge the will. It is strongly recommended to correct this before the will is finalized or registered.
+        <div class="alert">⚠ The will currently states UAE as place of residence. Chadi resides in KSA. This must be corrected.</div>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFAQ(this)"><span class="faq-num">7</span>I live in KSA but my will says UAE — what do I need to do?<span class="faq-arrow">▼</span></div>
+      <div class="faq-a">The will needs to be amended to reflect your correct current residence as Saudi Arabia. This is a straightforward correction that can be made before the will is signed and registered.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFAQ(this)"><span class="faq-num">8</span>Do I need to update the will every time my Emirates ID or passport changes?<span class="faq-arrow">▼</span></div>
+      <div class="faq-a">Not necessarily. Courts can identify you through multiple means. However, it is good practice to update your will when significant identity documents change to avoid any ambiguity during estate administration.</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- 3. REVOCATION -->
+<div class="category">
+  <div class="cat-header" onclick="toggleCat(this)">Revocation & Updates <span class="cat-toggle">▲</span></div>
+  <div class="cat-body">
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFAQ(this)"><span class="faq-num">9</span>Does signing this will cancel all my previous wills?<span class="faq-arrow">▼</span></div>
+      <div class="faq-a">Yes. Clause 2 (Revocation) explicitly cancels all previous wills, testamentary writings, and codicils relating to your UAE estate. Only this will is valid from the date it is signed.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFAQ(this)"><span class="faq-num">10</span>What happens if I buy a new property in the UAE after signing this will — is it automatically covered?<span class="faq-arrow">▼</span></div>
+      <div class="faq-a">Yes. Clause 5 defines your estate as all assets of every kind situated in the UAE at the time of your death — including future acquisitions. Any property bought after signing is automatically included in the 50/50 split unless you update the will to direct it differently.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFAQ(this)"><span class="faq-num">11</span>Do I need to rewrite the will every time I acquire a new asset?<span class="faq-arrow">▼</span></div>
+      <div class="faq-a">No — new UAE assets are automatically covered. You only need to update the will if you want to distribute a specific new asset differently from the general 50/50 split already stated.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFAQ(this)"><span class="faq-num">12</span>Can I make changes to the will without rewriting the entire document?<span class="faq-arrow">▼</span></div>
+      <div class="faq-a">Yes. Minor changes can be made through a Codicil — a formal legal amendment to the existing will. For significant structural changes, rewriting is advisable. Clause 4(D) also allows you to give specific instructions to your Trustee through signed informal writings without amending the will.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFAQ(this)"><span class="faq-num">13</span>Can I revoke this will entirely at any time?<span class="faq-arrow">▼</span></div>
+      <div class="faq-a">Yes. You can revoke this will at any time while you are alive and of sound mind, either by destroying it, signing a formal revocation document, or executing a new will that explicitly cancels this one.</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- 4. JURISDICTION & SHARIA -->
+<div class="category">
+  <div class="cat-header" onclick="toggleCat(this)">Jurisdiction & Sharia Law <span class="cat-toggle">▲</span></div>
+  <div class="cat-body">
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFAQ(this)"><span class="faq-num">14</span>Will Sharia law apply to my estate?<span class="faq-arrow">▼</span></div>
+      <div class="faq-a">No. Clause 3(A) explicitly excludes Sharia law under any circumstances. As a non-Muslim with a registered will, UAE law fully supports this exclusion. <span class="law-ref">(Dubai Law No. 15/2017; Federal Law No. 5/1985 Art. 17)</span></div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFAQ(this)"><span class="faq-num">15</span>Why is Lebanese law mentioned in this will?<span class="faq-arrow">▼</span></div>
+      <div class="faq-a">Lebanese law is referenced in Clause 3(C) as a fallback only. If a UAE court refuses to enforce any specific part of this will, Lebanese law — as the law of Chadi's home country — will be applied to resolve that dispute rather than Sharia or UAE default rules. <span class="law-ref">(Federal Law No. 5/1985 Art. 17)</span></div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFAQ(this)"><span class="faq-num">16</span>What law governs this will exactly?<span class="faq-arrow">▼</span></div>
+      <div class="faq-a">Three layers apply:
+        <ul>
+          <li>Primary: Dubai Law No. 15 of 2017 (non-Muslim wills in Dubai)</li>
+          <li>Supporting: UAE Federal Law No. 5/1985, Article 17 (home country law for non-nationals)</li>
+          <li>Fallback: Lebanese civil law (if court rejects any provision)</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFAQ(this)"><span class="faq-num">17</span>What happens if the UAE court refuses to apply my wishes?<span class="faq-arrow">▼</span></div>
+      <div class="faq-a">Clause 3(C) directs the court to apply Lebanese law to resolve the dispute. Additionally, Clause 3(D) — the Severability Clause — ensures only the rejected part is affected; all other clauses remain fully valid.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFAQ(this)"><span class="faq-num">18</span>Can a court override my instructions entirely?<span class="faq-arrow">▼</span></div>
+      <div class="faq-a">A court cannot override a properly registered non-Muslim will entirely. It can only set aside specific provisions that violate UAE public policy, involve illegal arrangements, or harm a minor's interests. The rest of the will stands. <span class="law-ref">(Dubai Law No. 15/2017)</span></div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFAQ(this)"><span class="faq-num">19</span>What is the significance of Dubai Law No. 15 of 2017?<span class="faq-arrow">▼</span></div>
+      <div class="faq-a">This law created the legal framework for non-Muslims to register wills in Dubai and have them enforced exactly as written. It takes precedence over all other general inheritance legislation. Without this law, a non-Muslim's estate in Dubai could default to Sharia distribution rules.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFAQ(this)"><span class="faq-num">20</span>Does being Christian affect how my will is treated in the UAE?<span class="faq-arrow">▼</span></div>
+      <div class="faq-a">Yes — positively. As a non-Muslim, you have the legal right to opt out of Sharia inheritance entirely and distribute your estate freely. Muslims do not have this option under UAE law. <span class="law-ref">(Dubai Law No. 15/2017)</span></div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFAQ(this)"><span class="faq-num">21</span>What would happen to my estate if I did NOT have this will — how would Sharia law divide it?<span class="faq-arrow">▼</span></div>
+      <div class="faq-a">Without a registered will, UAE courts would apply Sharia inheritance rules (Faraid) by default, even for non-Muslims. Under Faraid:
+        <ul>
+          <li>Your children would receive fixed shares based on gender (sons get double daughters)</li>
+          <li>Your parents would receive a share if alive</li>
+          <li>Your executor (Ms. Yulia) would receive nothing as she is not a blood relative</li>
+          <li>Distribution would be entirely outside your control</li>
+        </ul>
+        <span class="law-ref">(Federal Law No. 28/2005 — Personal Status Law)</span>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFAQ(this)"><span class="faq-num">22</span>Under Sharia law, who would get what percentage of my estate?<span class="faq-arrow">▼</span></div>
+      <div class="faq-a">Under Faraid, the division depends on surviving family members. As a general example with two daughters and no sons:
+        <ul>
+          <li>Two daughters together would receive a maximum of 2/3 of the estate</li>
+          <li>Remaining 1/3 would go to other heirs (parents, siblings) based on who is alive</li>
+          <li>Non-relatives (like Ms. Yulia) receive nothing</li>
+        </ul>
+        This is precisely why this will exists — to override this and give 50% to each daughter directly, managed by Ms. Yulia until they turn 18.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFAQ(this)"><span class="faq-num">23</span>Can Sharia law still interfere even though my will explicitly excludes it?<span class="faq-arrow">▼</span></div>
+      <div class="faq-a">No — not if the will is properly registered. A registered non-Muslim will under Dubai Law No. 15/2017 is legally binding and Sharia law cannot override it. The only risk would be if the will is unregistered, improperly executed, or successfully challenged in court. <span class="law-ref">(Dubai Law No. 15/2017)</span></div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFAQ(this)"><span class="faq-num">24</span>What is the difference between what Sharia law dictates versus what my will directs?<span class="faq-arrow">▼</span></div>
+      <div class="faq-a">
+        <ul>
+          <li><strong>Sharia:</strong> Fixed shares by gender and blood relation. Non-relatives get nothing. No flexibility.</li>
+          <li><strong>This will:</strong> Equal 50/50 split to both daughters. Ms. Yulia manages as trustee. Full flexibility.</li>
+          <li><strong>Key difference:</strong> The will gives you complete control. Sharia removes it entirely.</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- 5. EXECUTOR -->
+<div class="category">
+  <div class="cat-header" onclick="toggleCat(this)">Executor & Trustee <span class="cat-toggle">▲</span></div>
+  <div class="cat-body">
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFAQ(this)"><span class="faq-num">25</span>What is the difference between an Executor and a Trustee?<span class="faq-arrow">▼</span></div>
+      <div class="faq-a">
+        <ul>
+          <li><strong>Executor:</strong> Carries out the instructions in the will — pays debts, files with court, distributes assets.</li>
+          <li><strong>Trustee:</strong> Holds and manages assets on behalf of beneficiaries who cannot yet receive them (e.g. minors).</li>
+        </ul>
+        In this will, Ms. Yulia Tararyshkina serves as both.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFAQ(this)"><span class="faq-num">26</span>Who is appointed as my Executor and Trustee?<span class="faq-arrow">▼</span></div>
+      <div class="faq-a"><strong>Primary:</strong> Ms. Yulia Tararyshkina — Russian national, Passport No. 764930320.<br><strong>Substitute:</strong> Mr. Charbel Nassif Menhem — Lebanese national, Passport No. LR1359601. <span class="law-ref">(Clause 4A & 4B)</span></div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFAQ(this)"><span class="faq-num">27</span>What happens if my appointed Executor is unable or unwilling to act?<span class="faq-arrow">▼</span></div>
+      <div class="faq-a">Mr. Charbel Nassif Menhem automatically steps in as substitute Executor and Guardian. He has the same powers and responsibilities as the primary appointee. <span class="law-ref">(Clause 4B)</span></div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFAQ(this)"><span class="faq-num">28</span>Who is the substitute Executor and what are their powers?<span class="faq-arrow">▼</span></div>
+      <div class="faq-a">Mr. Charbel Nassif Menhem. He holds identical powers — managing, distributing, and administering the estate, and acting as guardian for the minor beneficiaries if needed.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFAQ(this)"><span class="faq-num">29</span>Can my Trustee resign?<span class="faq-arrow">▼</span></div>
+      <div class="faq-a">Yes. Clause 8(F) allows any Trustee to resign from their role without losing any personal benefits they may have under the will. If they resign, the substitute Executor steps in.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFAQ(this)"><span class="faq-num">30</span>Can my Trustee appoint someone else to manage the estate?<span class="faq-arrow">▼</span></div>
+      <div class="faq-a">Yes. Clause 8(E) allows the Trustee to appoint a law firm or any qualified third party to act as executor or manager of the estate on their behalf. <span class="law-ref">(Clause 8E)</span></div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFAQ(this)"><span class="faq-num">31</span>What if I want to change my Executor in the future?<span class="faq-arrow">▼</span></div>
+      <div class="faq-a">You can update the will or add a codicil naming a new Executor. The change must be formally documented and re-registered to be legally valid.</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- 6. ESTATE -->
+<div class="category">
+  <div class="cat-header" onclick="toggleCat(this)">Estate & Assets <span class="cat-toggle">▲</span></div>
+  <div class="cat-body">
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFAQ(this)"><span class="faq-num">32</span>What exactly is included in "my estate"?<span class="faq-arrow">▼</span></div>
+      <div class="faq-a">Everything you own in the UAE — tangible or intangible, movable or immovable. This includes real estate, cash, bank accounts, investments, insurance, shares, digital assets, and any rights or entitlements. <span class="law-ref">(Clause 5)</span></div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFAQ(this)"><span class="faq-num">33</span>Are my bank accounts and investments covered?<span class="faq-arrow">▼</span></div>
+      <div class="faq-a">Yes. All bank accounts, investment accounts, insurance policies, shares, and interests in companies are explicitly included. <span class="law-ref">(Clause 5 ii)</span></div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFAQ(this)"><span class="faq-num">34</span>Are my digital assets covered — crypto, online accounts, social media?<span class="faq-arrow">▼</span></div>
+      <div class="faq-a">Yes. Clause 5(iii) specifically includes digital wallets, email accounts, online financial platforms, and social media accounts. Your Trustee is granted full authority to access, manage, distribute, or close them. <span class="law-ref">(Clause 5 iii)</span></div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFAQ(this)"><span class="faq-num">35</span>Does the will cover jointly owned property?<span class="faq-arrow">▼</span></div>
+      <div class="faq-a">Yes — your share in jointly owned property is covered. However, the co-owner's share is unaffected. Only your ownership portion passes through this will.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFAQ(this)"><span class="faq-num">36</span>Are assets I buy after signing the will automatically included?<span class="faq-arrow">▼</span></div>
+      <div class="faq-a">Yes. The estate is defined as all assets situated in the UAE at the time of death — not just those existing when the will was signed. Future purchases are automatically included. <span class="law-ref">(Clause 5)</span></div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFAQ(this)"><span class="faq-num">37</span>What assets are NOT covered by this will?<span class="faq-arrow">▼</span></div>
+      <div class="faq-a">Assets located outside the UAE are not covered — this includes property in Lebanon, KSA, or any other country. A separate will or legal arrangement is needed for those jurisdictions.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFAQ(this)"><span class="faq-num">38</span>Are my assets outside the UAE covered?<span class="faq-arrow">▼</span></div>
+      <div class="faq-a">No. This will explicitly covers UAE-situated assets only. For assets in other countries, separate legal documentation in the relevant jurisdiction is required.</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- 7. ADMINISTRATION -->
+<div class="category">
+  <div class="cat-header" onclick="toggleCat(this)">Administration & Debts <span class="cat-toggle">▲</span></div>
+  <div class="cat-body">
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFAQ(this)"><span class="faq-num">39</span>What happens to my debts when I die?<span class="faq-arrow">▼</span></div>
+      <div class="faq-a">All outstanding debts must be paid from your estate before any distribution to beneficiaries. This is the first obligation of your Trustee. <span class="law-ref">(Clause 6 i)</span></div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFAQ(this)"><span class="faq-num">40</span>In what order are my assets dealt with before distribution?<span class="faq-arrow">▼</span></div>
+      <div class="faq-a">
+        <ul>
+          <li>1. Pay all debts</li>
+          <li>2. Pay funeral and testamentary expenses</li>
+          <li>3. Settle any legal claims against the estate</li>
+          <li>4. Fulfill specific gifts named in the will</li>
+          <li>5. Distribute the remainder 50/50 to beneficiaries</li>
+        </ul>
+        <span class="law-ref">(Clause 6)</span>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFAQ(this)"><span class="faq-num">41</span>Can my Trustee sell my property to pay debts?<span class="faq-arrow">▼</span></div>
+      <div class="faq-a">Yes. The Trustee has full discretion to sell any portion of the estate to meet debts and obligations before distributing the remainder to beneficiaries. <span class="law-ref">(Clause 6 & 8D)</span></div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFAQ(this)"><span class="faq-num">42</span>Who pays for my funeral — and from where?<span class="faq-arrow">▼</span></div>
+      <div class="faq-a">Funeral expenses are paid from your estate as the second priority obligation, immediately after debts. Your family may need to cover costs upfront if accounts are frozen, and then be reimbursed from the estate once it is released.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFAQ(this)"><span class="faq-num">43</span>What happens if my estate doesn't have enough to cover all debts?<span class="faq-arrow">▼</span></div>
+      <div class="faq-a">Debts are paid in order of legal priority until the estate is exhausted. Beneficiaries are not personally liable for any remaining unpaid debts — they simply receive less or nothing if the estate is fully consumed by obligations. Under UAE law, heirs do not inherit personal liability for debts. <span class="law-ref">(Federal Law No. 5/1985)</span></div>
+    </div>
+
+  </div>
+</div>
+
+<!-- 8. BENEFICIARIES -->
+<div class="category">
+  <div class="cat-header" onclick="toggleCat(this)">Beneficiaries & Distribution <span class="cat-toggle">▲</span></div>
+  <div class="cat-body">
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFAQ(this)"><span class="faq-num">44</span>Who are my beneficiaries and what do they receive?<span class="faq-arrow">▼</span></div>
+      <div class="faq-a">
+        <ul>
+          <li><strong>Ms. Anastasia Menhem</strong> (Russian, Passport 52N7720335) — 50%</li>
+          <li><strong>Ms. Ekaterina Menhem</strong> (Russian, Passport 51N7720334) — 50%</li>
+        </ul>
+        Both are currently minors. Their shares are managed by Ms. Yulia until each turns 18. <span class="law-ref">(Clause 7)</span>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFAQ(this)"><span class="faq-num">45</span>What happens if one of my beneficiaries dies before me?<span class="faq-arrow">▼</span></div>
+      <div class="faq-a">The surviving beneficiary inherits 100% of the estate. <span class="law-ref">(Clause 7)</span></div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFAQ(this)"><span class="faq-num">46</span>Can I add or remove beneficiaries without rewriting the will?<span class="faq-arrow">▼</span></div>
+      <div class="faq-a">Any change to beneficiaries requires a formal amendment (codicil) or a new will. This cannot be done informally as it directly affects inheritance rights.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFAQ(this)"><span class="faq-num">47</span>My beneficiaries are minors — when do they receive their inheritance?<span class="faq-arrow">▼</span></div>
+      <div class="faq-a">Each beneficiary receives their full share unconditionally upon turning 18 years of age. Until then, Ms. Yulia manages their shares. <span class="law-ref">(Clause 7)</span></div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFAQ(this)"><span class="faq-num">48</span>Who manages the beneficiaries' shares while they are minors?<span class="faq-arrow">▼</span></div>
+      <div class="faq-a">Ms. Yulia Tararyshkina is appointed as legal guardian and trustee over both beneficiaries' shares until they each reach 18. <span class="law-ref">(Clause 7 & 8)</span></div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFAQ(this)"><span class="faq-num">49</span>What can the Trustee do with the minors' shares in the meantime?<span class="faq-arrow">▼</span></div>
+      <div class="faq-a">The Trustee can manage, invest, retain, and use income for the benefit of the minor — in whatever way they judge to be in the minor's best interest. They can also pay amounts to the legal guardian for the minor's day-to-day needs. <span class="law-ref">(Clause 8A, 8B, 8C)</span></div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFAQ(this)"><span class="faq-num">50</span>What happens to income generated by the estate while minors are growing up?<span class="faq-arrow">▼</span></div>
+      <div class="faq-a">Income is accumulated with capital and retained by the Trustee on behalf of the minor until they reach legal age. The Trustee can use part of it for the minor's benefit in the meantime. <span class="law-ref">(Clause 8B)</span></div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFAQ(this)"><span class="faq-num">51</span>When a beneficiary turns 18, do they automatically receive their full share?<span class="faq-arrow">▼</span></div>
+      <div class="faq-a">Yes. Upon turning 18, their share vests in them absolutely — without any restriction or condition. The Trustee's role over that share ends. <span class="law-ref">(Clause 7)</span></div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFAQ(this)"><span class="faq-num">52</span>What if a beneficiary lacks mental capacity — not just age?<span class="faq-arrow">▼</span></div>
+      <div class="faq-a">Clause 8 covers any beneficiary lacking full legal capacity — not just minors. If a beneficiary cannot legally manage assets due to mental incapacity, the Trustee retains and manages their share, paying income to their legal guardian until capacity is established or a court makes alternative arrangements.</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- 9. INFORMAL BEQUESTS -->
+<div class="category">
+  <div class="cat-header" onclick="toggleCat(this)">Informal Writings & Bequests <span class="cat-toggle">▲</span></div>
+  <div class="cat-body">
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFAQ(this)"><span class="faq-num">53</span>Can I leave specific items or amounts to specific people outside of this will?<span class="faq-arrow">▼</span></div>
+      <div class="faq-a">Yes. Clause 4(D) allows you to write signed and dated letters or notes directing your Trustee to give specific items or amounts to specific people. These informal instructions are binding on the Trustee as long as they meet the requirements of the clause.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFAQ(this)"><span class="faq-num">54</span>What qualifies as a valid informal written instruction?<span class="faq-arrow">▼</span></div>
+      <div class="faq-a">It must be: signed by you personally, dated after the date of this will, and clearly express your intention. Formal legal language is not required. Your Trustees are the sole judges of whether a document qualifies. <span class="law-ref">(Clause 4D)</span></div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFAQ(this)"><span class="faq-num">55</span>Are informal bequests subject to taxes or fees?<span class="faq-arrow">▼</span></div>
+      <div class="faq-a">No — Clause 4(D) explicitly states that bequests made through informal writings shall be free of interest, delivery expenses, and government taxes, unless you specifically state otherwise in that document.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFAQ(this)"><span class="faq-num">56</span>Who decides if an informal document is valid — the court or the Trustee?<span class="faq-arrow">▼</span></div>
+      <div class="faq-a">The Trustees are the sole judges under this will. They decide whether an informal document qualifies. However, if a dispute arises, a court can review their decision.</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- 10. VALIDITY -->
+<div class="category">
+  <div class="cat-header" onclick="toggleCat(this)">Validity & Court Challenges <span class="cat-toggle">▲</span></div>
+  <div class="cat-body">
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFAQ(this)"><span class="faq-num">57</span>Under what circumstances can a court reject part of my will?<span class="faq-arrow">▼</span></div>
+      <div class="faq-a">
+        <ul>
+          <li>The provision violates UAE public policy</li>
+          <li>The provision is illegal under UAE law</li>
+          <li>The will was improperly signed or witnessed</li>
+          <li>A creditor has a legal claim that takes priority</li>
+          <li>A provision harms a minor's best interests</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFAQ(this)"><span class="faq-num">58</span>If one clause is found invalid, does the whole will fail?<span class="faq-arrow">▼</span></div>
+      <div class="faq-a">No. Clause 3(D) — the Severability Clause — ensures that if one provision is ruled invalid, all remaining provisions continue to be fully enforceable. The invalid clause is removed; the rest stands.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFAQ(this)"><span class="faq-num">59</span>Can family members challenge this will?<span class="faq-arrow">▼</span></div>
+      <div class="faq-a">Anyone can attempt to challenge a will in court. However, a properly registered non-Muslim will in Dubai is very difficult to overturn. Grounds for challenge are limited to fraud, forgery, mental incapacity at time of signing, or undue influence. <span class="law-ref">(Dubai Law No. 15/2017)</span></div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFAQ(this)"><span class="faq-num">60</span>What makes a will legally valid in the UAE?<span class="faq-arrow">▼</span></div>
+      <div class="faq-a">For a non-Muslim will in Dubai, it must be: in writing, signed by the testator, witnessed by two witnesses, and registered with the DIFC Wills Service Centre or Dubai Courts. <span class="law-ref">(Dubai Law No. 15/2017)</span></div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFAQ(this)"><span class="faq-num">61</span>Does the will need to be registered anywhere in the UAE?<span class="faq-arrow">▼</span></div>
+      <div class="faq-a">Yes — registration is strongly recommended and practically essential. A will registered with the DIFC Wills Service Centre or Dubai Courts is immediately enforceable and very difficult to challenge. An unregistered will can still be submitted to court but carries more risk of delay and challenge. <span class="law-ref">(Dubai Law No. 15/2017)</span></div>
+    </div>
+
+  </div>
+</div>
+
+<!-- 11. FUNERAL -->
+<div class="category">
+  <div class="cat-header" onclick="toggleCat(this)">Funeral Wishes <span class="cat-toggle">▲</span></div>
+  <div class="cat-body">
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFAQ(this)"><span class="faq-num">62</span>How do I ensure my funeral follows my religious wishes?<span class="faq-arrow">▼</span></div>
+      <div class="faq-a">Clause 9 states your funeral should follow Christian rites and faith. Your Executor is legally bound to respect this. It is also advisable to inform your family and Executor of your specific preferences separately so they can act immediately without waiting for the will to be processed.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFAQ(this)"><span class="faq-num">63</span>Who is responsible for carrying out my funeral arrangements?<span class="faq-arrow">▼</span></div>
+      <div class="faq-a">Your Executor — Ms. Yulia Tararyshkina — is responsible. In her absence, Mr. Charbel Nassif Menhem steps in.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFAQ(this)"><span class="faq-num">64</span>Are funeral costs covered by the estate?<span class="faq-arrow">▼</span></div>
+      <div class="faq-a">Yes. Funeral expenses are the second priority payment from your estate — paid immediately after settling debts, before any distribution to beneficiaries. <span class="law-ref">(Clause 6 i)</span></div>
+    </div>
+
+  </div>
+</div>
+
+<!-- 12. WHAT HAPPENS WHEN YOU DIE -->
+<div class="category">
+  <div class="cat-header" onclick="toggleCat(this)">What Happens When You Die — The Practical Process <span class="cat-toggle">▲</span></div>
+  <div class="cat-body">
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFAQ(this)"><span class="faq-num">65</span>What exactly happens the moment I pass away — what is the sequence of events?<span class="faq-arrow">▼</span></div>
+      <div class="faq-a">
+        <ul>
+          <li><strong>Step 1:</strong> Death certificate is issued by UAE hospital or relevant authority</li>
+          <li><strong>Step 2:</strong> Family or Executor notifies relevant authorities, banks, and the will registry</li>
+          <li><strong>Step 3:</strong> Banks freeze all accounts automatically upon notification</li>
+          <li><strong>Step 4:</strong> Executor applies to UAE court (Dubai Courts or DIFC) for a Grant of Probate</li>
+          <li><strong>Step 5:</strong> Court reviews and validates the registered will</li>
+          <li><strong>Step 6:</strong> Court issues an order authorizing the Executor to act</li>
+          <li><strong>Step 7:</strong> Executor presents court order to banks and institutions to unfreeze and transfer assets</li>
+          <li><strong>Step 8:</strong> Debts, funeral costs, and claims are paid</li>
+          <li><strong>Step 9:</strong> Remaining estate is distributed to beneficiaries per the will</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFAQ(this)"><span class="faq-num">66</span>How does my Executor find out that I have died?<span class="faq-arrow">▼</span></div>
+      <div class="faq-a">There is no automatic legal notification to your Executor. It is your family's or next of kin's responsibility to inform the Executor. This is why it is critical that your Executor's contact details are known to your family, and that your family knows who your Executor is and where the will is stored.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFAQ(this)"><span class="faq-num">67</span>How do banks find out that I have died — who notifies them?<span class="faq-arrow">▼</span></div>
+      <div class="faq-a">Banks do not automatically know. Either the family, the Executor, or the court notifies them. Once a bank is officially notified — typically with a death certificate — they are legally required to freeze all accounts of the deceased to protect the estate. <span class="law-ref">(UAE Central Bank regulations; Federal Law No. 5/1985)</span></div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFAQ(this)"><span class="faq-num">68</span>Do banks automatically freeze my accounts when I die — and why?<span class="faq-arrow">▼</span></div>
+      <div class="faq-a">Yes — once notified of a death, banks are legally required to freeze all accounts. This protects the estate from being accessed without legal authority and ensures assets are distributed properly through the legal process. No one — including family members — can withdraw funds once accounts are frozen.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFAQ(this)"><span class="faq-num">69</span>Can my family access my bank accounts immediately after my death?<span class="faq-arrow">▼</span></div>
+      <div class="faq-a">No. Once accounts are frozen, access is not permitted until the court issues a formal order authorizing the Executor to act. This is why it is advisable to keep some accessible emergency funds outside of sole-name accounts — such as a joint account — to cover immediate expenses like funeral costs.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFAQ(this)"><span class="faq-num">70</span>With a registered will, what is the step-by-step process my Executor follows?<span class="faq-arrow">▼</span></div>
+      <div class="faq-a">
+        <ul>
+          <li>1. Obtain the official death certificate</li>
+          <li>2. Locate the registered will (DIFC or Dubai Courts registry)</li>
+          <li>3. File a probate application with the relevant court</li>
+          <li>4. Submit: will, death certificate, Executor's ID, asset list</li>
+          <li>5. Court validates the will and issues a Grant of Probate</li>
+          <li>6. Executor presents the Grant of Probate to each bank and institution</li>
+          <li>7. Banks unfreeze accounts and transfer assets to estate account</li>
+          <li>8. Executor pays debts, expenses, and distributes per the will</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFAQ(this)"><span class="faq-num">71</span>Does my Executor go to court first, or directly to the bank?<span class="faq-arrow">▼</span></div>
+      <div class="faq-a">Court first — always. The Executor must obtain a court-issued Grant of Probate before any bank will act. No bank in the UAE will release frozen funds without a valid court order, regardless of what the will says.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFAQ(this)"><span class="faq-num">72</span>Can my Executor go directly to the bank with the will to unfreeze accounts?<span class="faq-arrow">▼</span></div>
+      <div class="faq-a">No. A will alone is not sufficient to unfreeze bank accounts. The Executor must first obtain a Grant of Probate from the Dubai Courts or DIFC Court. Only then can they present the court order to the bank. The will is the foundation — the court order is the key.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFAQ(this)"><span class="faq-num">73</span>How long does the entire process take from death to distribution?<span class="faq-arrow">▼</span></div>
+      <div class="faq-a">For a registered non-Muslim will in Dubai, the probate process typically takes between 4 to 12 weeks depending on complexity, asset types, and whether any disputes arise. Simple estates with a registered DIFC will can be resolved faster. Complex estates with property, business interests, or disputes may take longer.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFAQ(this)"><span class="faq-num">74</span>What documents does my Executor need to present to the court and banks?<span class="faq-arrow">▼</span></div>
+      <div class="faq-a">
+        <ul>
+          <li>Original death certificate (attested)</li>
+          <li>Registered will or certified copy</li>
+          <li>Executor's passport and ID</li>
+          <li>List of known assets and liabilities</li>
+          <li>Property title deeds (if applicable)</li>
+          <li>Bank account details</li>
+          <li>Court-issued Grant of Probate (for banks)</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFAQ(this)"><span class="faq-num">75</span>What happens to my assets during the period between death and the court order?<span class="faq-arrow">▼</span></div>
+      <div class="faq-a">All assets are frozen and legally protected. No one can access, sell, or transfer them. The estate effectively enters a holding period until the court issues the Grant of Probate. Property cannot be sold, and accounts cannot be debited during this time.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFAQ(this)"><span class="faq-num">76</span>Can my family pay for my funeral if accounts are frozen?<span class="faq-arrow">▼</span></div>
+      <div class="faq-a">Bank accounts will be frozen, so the family will likely need to cover funeral costs from personal funds initially. Once the Grant of Probate is issued, the Executor can reimburse these costs from the estate as a priority expense. Some UAE banks may release a limited amount for funeral expenses upon a formal request — this varies by bank policy.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFAQ(this)"><span class="faq-num">77</span>What if my Executor is abroad when I die — is there a time limit to act?<span class="faq-arrow">▼</span></div>
+      <div class="faq-a">There is no strict legal deadline to file for probate in the UAE, but delays can complicate matters — especially with frozen accounts and ongoing property obligations. The Executor can appoint a legal representative in the UAE to begin the process while they travel. Acting promptly is strongly advised.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFAQ(this)"><span class="faq-num">78</span>What happens if I die outside the UAE?<span class="faq-arrow">▼</span></div>
+      <div class="faq-a">Your UAE assets are still governed by this will. The process remains the same — the Executor applies to UAE courts for probate. However, the foreign death certificate must be officially translated into Arabic and attested (by the UAE Embassy in that country and the UAE Ministry of Foreign Affairs) before it is accepted by UAE courts and banks. This may add time to the process.</div>
+    </div>
+
+  </div>
+</div>
+
+</div><!-- end main -->
+
+<div class="footer">Internal team reference document · Not for client distribution without review · All legal references are to UAE law as applicable</div>
+
+<script>
+function toggleFAQ(el) {
+  const ans = el.nextElementSibling;
+  const arrow = el.querySelector('.faq-arrow');
+  ans.classList.toggle('open');
+  arrow.style.transform = ans.classList.contains('open') ? 'rotate(180deg)' : '';
+}
+
+function toggleCat(el) {
+  const body = el.nextElementSibling;
+  const toggle = el.querySelector('.cat-toggle');
+  body.classList.toggle('collapsed');
+  toggle.textContent = body.classList.contains('collapsed') ? '▼' : '▲';
+}
+
+function filterFAQ() {
+  const val = document.getElementById('searchInput').value.toLowerCase();
+  document.querySelectorAll('.faq-item').forEach(item => {
+    const q = item.querySelector('.faq-q').textContent.toLowerCase();
+    const a = item.querySelector('.faq-a').textContent.toLowerCase();
+    item.style.display = (q.includes(val) || a.includes(val)) ? '' : 'none';
+  });
+  document.querySelectorAll('.category').forEach(cat => {
+    const visible = [...cat.querySelectorAll('.faq-item')].some(i => i.style.display !== 'none');
+    cat.style.display = visible ? '' : 'none';
+    if (val && visible) {
+      cat.querySelector('.cat-body').classList.remove('collapsed');
+      cat.querySelector('.cat-toggle').textContent = '▲';
+    }
+  });
+}
+</script>
+</body>
+</html>
